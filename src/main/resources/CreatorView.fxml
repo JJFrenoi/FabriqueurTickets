@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="621.0" prefWidth="856.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <padding>
+        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+    </padding>
+
+    <center>
+        <VBox fx:id="center" alignment="CENTER" prefHeight="170.0" prefWidth="369.0" spacing="10">
+         <DatePicker fx:id="enterDate"/>
+         <TextField fx:id="enterNom" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Nom" style="-fx-border-color: Orange;" />
+         <TextField fx:id="enterChambre" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Chambre" style="-fx-border-color: Orange;" />
+         <TextField fx:id="enterType" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Type" style="-fx-border-color: Orange;" />
+            <TextField fx:id="enterTaille" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Taille" style="-fx-border-color: Orange;" />
+         <TextField fx:id="enterEntre" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Entrée" />
+         <HBox fx:id="centerPlat" alignment="CENTER" prefHeight="32.0" prefWidth="629.0">
+            <children>
+               <TextField fx:id="enterFeculent" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Féculent" />
+               <TextField fx:id="enterViande" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Viande" />
+               <TextField fx:id="enterLegume" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Légume" />
+            </children>
+         </HBox>
+         <TextField fx:id="enterLaitage" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Laitage" />
+         <TextField fx:id="enterDessert" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Dessert" />
+         <TextField fx:id="enterComment" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Comment" />
+            <Button onAction="#addToListView" text="OK" />
+        </VBox>
+    </center>
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+   <top>
+      <MenuBar nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: #ccffff; -fx-border-color: DodgerBlue;" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+         <cursor>
+            <Cursor fx:constant="CLOSED_HAND" />
+         </cursor>
+      </MenuBar>
+   </top>
+   <left>
+      <ListView fx:id="listView" prefHeight="588.0" prefWidth="223.0" style="-fx-background-color: #ccffff; -fx-border-color: DodgerBlue;" BorderPane.alignment="CENTER" />
+   </left>
+</BorderPane>
