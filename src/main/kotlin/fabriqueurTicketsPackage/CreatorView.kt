@@ -37,7 +37,7 @@ class CreatorView: View("Creator View :: Tickets Maker") {
         val plat = arrayOf(enterFeculent.text,enterViande.text,enterLegume.text)
         val ticket = Ticket(enterDate.toString(),
                 enterChambre.text.toInt(),
-                enterNom.text,
+                enterNom.text.toUpperCase(),
                 enterType.text,
                 enterEntre.text,
                 enterTaille.text,

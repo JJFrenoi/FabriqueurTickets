@@ -1,7 +1,5 @@
 package fabriqueurTicketsPackage
 
-import java.util.*
-
 class Ticket(date: String, numeroChambre : Int,nom : String,type : String,taille : String,entree : String?,plat : Array<String>?,laitage : String?,dessert :String?,comment : String?) {
     val date : String = date
     val numeroChambre : Int = numeroChambre
