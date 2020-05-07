@@ -31,6 +31,21 @@ class CreatorView: View("Creator View :: Tickets Maker") {
         button( messages["OK"]) {
             setOnAction { addToListView() }
         }
+        listView.onUserSelect(1) {
+            listView.items.remove(it)
+            enterNom.text = it.nom
+            enterChambre.text = it.numeroChambre.toString()
+            enterType.text = it.type
+            enterTaille.text = it.taille
+            enterEntre.text = it.entree
+            enterFeculent.text = it.plat?.get(0)
+            enterViande.text = it.plat?.get(1)
+            enterLegume.text = it.plat?.get(2)
+            enterDessert.text = it.dessert
+            enterComment.text = it.comment
+            enterLaitage.text = it.laitage
+            enterDate.text(it.date)
+        }
     }
     fun addToListView() {
         val filter = center.children.filterIsInstance<TextField>() + centerPlat.children.filterIsInstance<TextField>()
@@ -50,6 +65,7 @@ class CreatorView: View("Creator View :: Tickets Maker") {
         filter.forEach {
             it.clear()
         }
+        enterDate.editor.clear()
     }
 
 }

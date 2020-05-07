@@ -12,21 +12,24 @@ plugins {
     id 'application'
 
     id 'org.openjfx.javafxplugin' version '0.0.8'
-
 }
 javafx {
-    version = "11.0.2"
-    modules = [ 'javafx.controls' ,'javafx.fxml']
+    version = "14"
+    modules = ['javafx.controls', 'javafx.graphics','javafx.fxml']
 }
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
     mavenCentral()
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots/"
+    }
 }
 dependencies {
     // Align versions of all Kotlin components
     implementation platform('org.jetbrains.kotlin:kotlin-bom')
+    //implementation "no.tornado:tornadofx:2.0.0-SNAPSHOT"
 
     // Use the Kotlin JDK 8 standard library.
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
@@ -37,7 +40,7 @@ dependencies {
     // Use the Kotlin JUnit integration.
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
 
-    compile 'no.tornado:tornadofx:1.7.20'
+    compile 'no.tornado:tornadofx:2.0.0-SNAPSHOT'
 }
 
 application {
@@ -46,6 +49,6 @@ application {
 }
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "12"
     }
 }
