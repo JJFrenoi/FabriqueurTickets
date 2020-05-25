@@ -29,7 +29,6 @@ repositories {
 dependencies {
     // Align versions of all Kotlin components
     implementation platform('org.jetbrains.kotlin:kotlin-bom')
-    //implementation "no.tornado:tornadofx:2.0.0-SNAPSHOT"
 
     // Use the Kotlin JDK 8 standard library.
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
@@ -41,6 +40,26 @@ dependencies {
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
 
     compile 'no.tornado:tornadofx:2.0.0-SNAPSHOT'
+
+    // https://mvnrepository.com/artifact/org.controlsfx/controlsfx
+    compile group: 'org.controlsfx', name: 'controlsfx', version: '11.0.1'
+
+    // https://mvnrepository.com/artifact/com.itextpdf/itext7-core
+    compile 'com.itextpdf:itext7-core:7.1.8'
+    // https://mvnrepository.com/artifact/com.h2database/h2
+    implementation 'com.h2database:h2:1.4.199'
+
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
+    implementation 'org.slf4j:slf4j-nop:1.7.30'
+
+
+    compile 'org.jetbrains.exposed:exposed-core:0.24.1'
+    compile 'org.jetbrains.exposed:exposed-dao:0.24.1'
+    compile 'org.jetbrains.exposed:exposed-jdbc:0.24.1'
+    compile 'org.jetbrains.exposed:exposed-jodatime:0.24.1'
+
+
+
 }
 
 application {

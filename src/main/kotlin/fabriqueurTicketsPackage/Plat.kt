@@ -1,5 +1,0 @@
-package fabriqueurTicketsPackage
-
-class Plat {
-
-}
