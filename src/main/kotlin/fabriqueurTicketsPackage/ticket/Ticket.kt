@@ -5,17 +5,10 @@ import javafx.collections.FXCollections
 import javafx.scene.image.Image
 import java.time.LocalDate
 
-class Ticket(avatar : Image, date: LocalDate, numeroChambre : Int, nom : String, type : String, taille : String, plat : Plat?, comment : String?) {
-    val avatar = avatar
-    val date = date
-    val numeroChambre = numeroChambre
-    val nom = nom
-    val type = type
-    val taille = taille
-    val plat = plat
-    val comment = comment
+data class Ticket(val avatar : Image, val date: LocalDate, val numeroChambre : Int, val nom : String, val type : String, val taille : String, val plat : Plat?, val comment : String?) {
     companion object{
         val possibleSuggestionsType = FXCollections.observableArrayList<String>("VH", "MIXE" , "COUPE")
         val possibleSuggestionsTaille = FXCollections.observableArrayList<String>("Grand", "Petit" , "1/2")
     }
+    fun print() = toString()
 }

@@ -31,26 +31,30 @@ class Pdf(residentsList:ObservableList<Ticket> ) {
             if (residentsList.size > 0 ){
                 residentsList.forEach {
                     val cell = Cell()
-                    val image = Image(ImageDataFactory.create(it.avatar.url))
-                    image.scaleToFit(128f,97f)
-                    image.setHorizontalAlignment(HorizontalAlignment.CENTER)
-                    cell.add(image)
-                    cell.add(Paragraph(it.date.toString()) )
-                    cell.add(Paragraph("${it.numeroChambre} ${it.nom}"))
-                    cell.add(Paragraph("${it.taille} ${it.type}"))
-                    cell.add(Paragraph(it.plat?.entree ))
-                    cell.add(Paragraph("${it.plat?.feculent} ${it.plat?.viande} ${it.plat?.legume}"))
-                    cell.add(Paragraph(it.plat?.laitage))
-                    cell.add(Paragraph("${it.plat?.dessert} ${it.plat?.cafe}"))
-                    cell.add(Paragraph(it.comment))
-                    cell.setTextAlignment(center)
+                    val image = Image(ImageDataFactory.create(it.avatar.url)).apply {
+                        scaleToFit(128f,97f)
+                        setHorizontalAlignment(HorizontalAlignment.CENTER)
+                    }
+                    cell.apply{
+                        add(image)
+                        add(Paragraph(it.date.toString()) )
+                        add(Paragraph("${it.numeroChambre} ${it.nom}"))
+                        add(Paragraph("${it.taille} ${it.type}"))
+                        add(Paragraph(it.plat?.entree ))
+                        add(Paragraph("${it.plat?.feculent} ${it.plat?.viande} ${it.plat?.legume}"))
+                        add(Paragraph(it.plat?.laitage))
+                        add(Paragraph("${it.plat?.dessert} ${it.plat?.cafe}"))
+                        add(Paragraph(it.comment))
+                        setTextAlignment(center)
+                    }
                     table.addCell(cell)
                 }
 
             }
-            doc.add(table)
-
-            doc.close()
+            doc.apply {
+                add(table)
+                close()
+            }
 
         }catch (e : Exception){
             e.printStackTrace()

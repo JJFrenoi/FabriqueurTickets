@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.openjfx:javafx-controls:linux:14">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-controls/14/2bcf5308eb78334efe29ae9fe6ce82e7018fbe42/javafx-controls-14-linux.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-controls/14/ec1b89a8a68d35902b5d482fca2a455ad9b7bbed/javafx-controls-14-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
