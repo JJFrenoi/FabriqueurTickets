@@ -69,7 +69,9 @@ class CreatorView: View("Creator View :: Tickets Maker") {
         val filter = center.children.filterIsInstance<TextField>() + centerPlat.children.filterIsInstance<TextField>() +
                 hboxNomChambre.children.filterIsInstance<TextField>() + hboxTailleType.children.filterIsInstance<TextField>()+
                 hboxDessertCafe.children.filterIsInstance<TextField>()
-        val plat = Plat(enterEntre.text, enterFeculent.text, enterLegume.text, enterViande.text, enterLaitage.text, enterDessert.text, enterCafe.text)
+        val plat = Plat(enterEntre.text, enterFeculent.text, enterLegume.text, enterViande.text, enterLaitage.text, enterDessert.text, enterCafe.text).apply {
+            print()
+        }
         val ticket = Ticket(
                 avatar.image,
                 enterDate.value,
