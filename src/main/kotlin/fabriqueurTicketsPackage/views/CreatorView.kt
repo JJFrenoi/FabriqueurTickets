@@ -1,5 +1,6 @@
 package fabriqueurTicketsPackage.views
 
+import fabriqueurTicketsPackage.database.DatabaseControl
 import fabriqueurTicketsPackage.pdf.Pdf
 import fabriqueurTicketsPackage.ticket.Plat
 import fabriqueurTicketsPackage.ticket.Ticket
@@ -42,15 +43,16 @@ class CreatorView: View("Creator View :: Tickets Maker") {
     private val enterComment: TextField by fxid()
     private val enterDate : DatePicker by fxid()
     private val enterCafe : TextField by fxid()
+    private val databaseControl = DatabaseControl()
     init {
-        val pattern = "dd-MM-yyyy"
-        val dateFormatter = DateTimeFormatter.ofPattern(pattern)
+        val dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
         enterDate.converter = LocalDateStringConverter(dateFormatter, dateFormatter)
         addSuggestion()
         enterDate.value = LocalDate.now().plusDays(1)
         listView.cellFormat { text = "${it.nom} ${it.numeroChambre}" }
         listView.onUserSelect(1) {
             listView.items.remove(it)
+            databaseControl.removeItem(it.numeroChambre)
             enterNom.text = it.nom
             enterChambre.text = it.numeroChambre.toString()
             enterType.text = it.type
@@ -64,6 +66,8 @@ class CreatorView: View("Creator View :: Tickets Maker") {
             enterLaitage.text = it.plat?.laitage
             enterDate.value = it.date
         }
+        listView.items = databaseControl.pullDatabase()?.toObservable()
+
     }
     fun addToListView() {
         val filter = center.children.filterIsInstance<TextField>() + centerPlat.children.filterIsInstance<TextField>() +
@@ -86,16 +90,18 @@ class CreatorView: View("Creator View :: Tickets Maker") {
             it.clear()
         }
         enterDate.value = LocalDate.now().plusDays(1)
+        databaseControl.pushtoDatabase(ticket, plat)
     }
-    fun addSuggestion(){
+    private fun addSuggestion(){
         TextFields.bindAutoCompletion(enterEntre, Plat.possibleSuggestionsEntree)
         TextFields.bindAutoCompletion(enterType, Ticket.possibleSuggestionsType)
         TextFields.bindAutoCompletion(enterTaille, Ticket.possibleSuggestionsTaille)
         TextFields.bindAutoCompletion(enterCafe, Plat.possibleSuggestionsCafe)
     }
     fun toPDF(){
-        val pdf = Pdf(listView.items)
-        pdf.whereIsMyFile()
+        Pdf(listView.items).apply {
+            whereIsMyFile()
+        }
     }
     fun onClicAvatar(){
         val selectPhoto = arrayOf(FileChooser.ExtensionFilter("Fichiers Photos (*.jpeg, *.png, *.gif, *.bmp)", "*.jpeg", "*.png", "*.gif, *.bmp"))
@@ -103,14 +109,12 @@ class CreatorView: View("Creator View :: Tickets Maker") {
             val chooseFile = chooseFile("Selectionner une photo",selectPhoto)
             val url = chooseFile.first().toURI().toURL().toString()
             println(url)
-            val image = Image(url)
-            avatar.image = image
+            avatar.image = Image(url)
 
         }catch (e : Exception){
             alert(Alert.AlertType.ERROR , "Le lien vers image n'est pas valide")
         }
     }
-
 }
 
 
