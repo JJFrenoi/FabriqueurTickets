@@ -11,4 +11,5 @@ data class Ticket(val avatar : Image, val date: LocalDate, val numeroChambre : I
         val possibleSuggestionsTaille = FXCollections.observableArrayList<String>("Grand", "Petit" , "1/2")
     }
     fun print() = toString()
+    fun avatarPath() = avatar.url.toString()
 }
