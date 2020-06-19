@@ -13,6 +13,20 @@
 
     <center>
         <VBox fx:id="center" alignment="CENTER" prefHeight="170.0" prefWidth="369.0" spacing="10">
+         <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+           <tabs>
+             <Tab text="Untitled Tab 1">
+               <content>
+                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+             </Tab>
+             <Tab text="Untitled Tab 2">
+               <content>
+                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+             </Tab>
+           </tabs>
+         </TabPane>
          <ImageView fx:id="avatar" fitHeight="97.0" fitWidth="128.0" focusTraversable="true" nodeOrientation="INHERIT" onMouseClicked="#onClicAvatar" pickOnBounds="true" preserveRatio="true">
             <image>
                <Image url="@avatar.png" />
