@@ -6,77 +6,327 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="621.0" prefWidth="856.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
     <padding>
         <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
     </padding>
 
     <center>
-        <VBox fx:id="center" alignment="CENTER" prefHeight="170.0" prefWidth="369.0" spacing="10">
-         <ImageView fx:id="avatar" fitHeight="97.0" fitWidth="128.0" focusTraversable="true" nodeOrientation="INHERIT" onMouseClicked="#onClicAvatar" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@avatar.png" />
-            </image></ImageView>
-         <DatePicker fx:id="enterDate" />
-         <HBox fx:id="hboxNomChambre" alignment="CENTER" prefHeight="30.0" prefWidth="629.0">
-            <children>
-               <TextField fx:id="enterNom" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Nom" style="-fx-border-color: Orange;" />
-               <TextField fx:id="enterChambre" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Chambre" style="-fx-border-color: Orange;" />
-            </children>
-         </HBox>
-         <HBox fx:id="hboxTailleType" alignment="CENTER" prefHeight="31.0" prefWidth="629.0">
-            <children>
-                  <TextField fx:id="enterTaille" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Taille" style="-fx-border-color: Orange;" />
-               <TextField fx:id="enterType" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Type" style="-fx-border-color: Orange;" />
-            </children>
-         </HBox>
-         <TextField fx:id="enterEntre" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Entrée" />
-         <HBox fx:id="centerPlat" alignment="CENTER" prefHeight="32.0" prefWidth="629.0">
-            <children>
-               <TextField fx:id="enterFeculent" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Féculent" />
-               <TextField fx:id="enterViande" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Viande" />
-               <TextField fx:id="enterLegume" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Légume" />
-            </children>
-         </HBox>
-         <TextField fx:id="enterLaitage" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Laitage" />
-         <HBox fx:id="hboxDessertCafe" alignment="CENTER" prefHeight="25.0" prefWidth="629.0">
-            <children>
-               <TextField fx:id="enterDessert" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Dessert" />
-               <TextField fx:id="enterCafe" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Café" />
-            </children>
-         </HBox>
-         <TextField fx:id="enterComment" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Comment" />
-            <Button onAction="#addToListView" text="Ajouter" />
-        </VBox>
+      <GridPane>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+              <VBox fx:id="center" alignment="CENTER" spacing="10" style="-fx-border-color: DodgerBlue;" GridPane.columnIndex="0" GridPane.hgrow="NEVER" GridPane.rowIndex="0" GridPane.vgrow="NEVER">
+               <ImageView fx:id="avatar" fitHeight="97.0" fitWidth="128.0" focusTraversable="true" nodeOrientation="INHERIT" onMouseClicked="#onClicAvatar" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@avatar.png" />
+                  </image>
+               </ImageView>
+               <DatePicker fx:id="enterDate" />
+               <HBox fx:id="hboxNomChambre" alignment="CENTER">
+                  <children>
+                     <TextField fx:id="enterNom" alignment="CENTER" promptText="Nom" style="-fx-border-color: Orange;" />
+                     <TextField fx:id="enterChambre" alignment="CENTER" promptText="Chambre" style="-fx-border-color: Orange;" />
+                  </children>
+               </HBox>
+               <HBox fx:id="hboxTailleType" alignment="CENTER">
+                  <children>
+                        <TextField fx:id="enterTaille" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Taille" style="-fx-border-color: Orange;" />
+                     <TextField fx:id="enterType" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Type" style="-fx-border-color: Orange;" />
+                  </children>
+               </HBox>
+               <TextField fx:id="enterEntre" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Entrée" />
+               <HBox fx:id="centerPlat" alignment="CENTER">
+                  <children>
+                     <TextField fx:id="enterFeculent" alignment="CENTER" promptText="Féculent" />
+                     <TextField fx:id="enterViande" alignment="CENTER" promptText="Viande" />
+                     <TextField fx:id="enterLegume" alignment="CENTER" promptText="Légume" />
+                  </children>
+               </HBox>
+               <TextField fx:id="enterLaitage" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Laitage" />
+               <HBox fx:id="hboxDessertCafe" alignment="CENTER">
+                  <children>
+                     <TextField fx:id="enterDessert" alignment="CENTER" promptText="Dessert" />
+                     <TextField fx:id="enterCafe" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Café" />
+                  </children>
+               </HBox>
+               <TextField fx:id="enterComment" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Comment" />
+                  <Button onAction="#addToListView" text="Ajouter" />
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+              </VBox>
+             <VBox fx:id="center1" alignment="CENTER" spacing="10" style="-fx-border-color: DodgerBlue;" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowIndex="0" GridPane.vgrow="NEVER">
+                 <ImageView fx:id="avatar1" fitHeight="97.0" fitWidth="128.0" focusTraversable="true" nodeOrientation="INHERIT" onMouseClicked="#onClicAvatar" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                         <Image url="@avatar.png" />
+                     </image>
+                 </ImageView>
+                 <DatePicker fx:id="enterDate1" />
+                 <HBox fx:id="hboxNomChambre1" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterNom1" alignment="CENTER" promptText="Nom" style="-fx-border-color: Orange;" />
+                         <TextField fx:id="enterChambre1" alignment="CENTER" promptText="Chambre" style="-fx-border-color: Orange;" />
+                     </children>
+                 </HBox>
+                 <HBox fx:id="hboxTailleType1" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterTaille1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Taille" style="-fx-border-color: Orange;" />
+                         <TextField fx:id="enterType1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Type" style="-fx-border-color: Orange;" />
+                     </children>
+                 </HBox>
+                 <TextField fx:id="enterEntre1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Entrée" />
+                 <HBox fx:id="centerPlat1" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterFeculent1" alignment="CENTER" promptText="Féculent" />
+                         <TextField fx:id="enterViande1" alignment="CENTER" promptText="Viande" />
+                         <TextField fx:id="enterLegume1" alignment="CENTER" promptText="Légume" />
+                     </children>
+                 </HBox>
+                 <TextField fx:id="enterLaitage1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Laitage" />
+                 <HBox fx:id="hboxDessertCafe1" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterDessert1" alignment="CENTER" promptText="Dessert" />
+                         <TextField fx:id="enterCafe1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Café" />
+                     </children>
+                 </HBox>
+                 <TextField fx:id="enterComment1" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Comment" />
+                 <Button onAction="#addToListView" text="Ajouter" />
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+             </VBox>
+             <VBox fx:id="center2" alignment="CENTER" spacing="10" style="-fx-border-color: DodgerBlue;" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="0" GridPane.vgrow="NEVER">
+                 <ImageView fx:id="avatar2" fitHeight="97.0" fitWidth="128.0" focusTraversable="true" nodeOrientation="INHERIT" onMouseClicked="#onClicAvatar" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                         <Image url="@avatar.png" />
+                     </image>
+                 </ImageView>
+                 <DatePicker fx:id="enterDate2" />
+                 <HBox fx:id="hboxNomChambre2" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterNom2" alignment="CENTER" promptText="Nom" style="-fx-border-color: Orange;" />
+                         <TextField fx:id="enterChambre2" alignment="CENTER" promptText="Chambre" style="-fx-border-color: Orange;" />
+                     </children>
+                 </HBox>
+                 <HBox fx:id="hboxTailleType2" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterTaille2" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Taille" style="-fx-border-color: Orange;" />
+                         <TextField fx:id="enterType2" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Type" style="-fx-border-color: Orange;" />
+                     </children>
+                 </HBox>
+                 <TextField fx:id="enterEntre2" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Entrée" />
+                 <HBox fx:id="centerPlat2" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterFeculent2" alignment="CENTER" promptText="Féculent" />
+                         <TextField fx:id="enterViande2" alignment="CENTER" promptText="Viande" />
+                         <TextField fx:id="enterLegume2" alignment="CENTER" promptText="Légume" />
+                     </children>
+                 </HBox>
+                 <TextField fx:id="enterLaitage2" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Laitage" />
+                 <HBox fx:id="hboxDessertCafe2" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterDessert2" alignment="CENTER" promptText="Dessert" />
+                         <TextField fx:id="enterCafe2" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Café" />
+                     </children>
+                 </HBox>
+                 <TextField fx:id="enterComment2" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Comment" />
+                 <Button onAction="#addToListView" text="Ajouter" />
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+             </VBox>
+             <VBox fx:id="center3" alignment="CENTER" spacing="10" style="-fx-border-color: DodgerBlue;" GridPane.columnIndex="3" GridPane.hgrow="NEVER" GridPane.rowIndex="0" GridPane.vgrow="NEVER">
+                 <ImageView fx:id="avatar3" fitHeight="97.0" fitWidth="128.0" focusTraversable="true" nodeOrientation="INHERIT" onMouseClicked="#onClicAvatar" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                         <Image url="@avatar.png" />
+                     </image>
+                 </ImageView>
+                 <DatePicker fx:id="enterDate3" />
+                 <HBox fx:id="hboxNomChambre3" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterNom3" alignment="CENTER" promptText="Nom" style="-fx-border-color: Orange;" />
+                         <TextField fx:id="enterChambre3" alignment="CENTER" promptText="Chambre" style="-fx-border-color: Orange;" />
+                     </children>
+                 </HBox>
+                 <HBox fx:id="hboxTailleType3" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterTaille3" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Taille" style="-fx-border-color: Orange;" />
+                         <TextField fx:id="enterType3" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Type" style="-fx-border-color: Orange;" />
+                     </children>
+                 </HBox>
+                 <TextField fx:id="enterEntre3" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Entrée" />
+                 <HBox fx:id="centerPlat3" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterFeculent3" alignment="CENTER" promptText="Féculent" />
+                         <TextField fx:id="enterViande3" alignment="CENTER" promptText="Viande" />
+                         <TextField fx:id="enterLegume3" alignment="CENTER" promptText="Légume" />
+                     </children>
+                 </HBox>
+                 <TextField fx:id="enterLaitage3" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Laitage" />
+                 <HBox fx:id="hboxDessertCafe3" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterDessert3" alignment="CENTER" promptText="Dessert" />
+                         <TextField fx:id="enterCafe3" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Café" />
+                     </children>
+                 </HBox>
+                 <TextField fx:id="enterComment3" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Comment" />
+                 <Button onAction="#addToListView" text="Ajouter" />
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+             </VBox>
+             <VBox fx:id="center4" alignment="CENTER" spacing="10" style="-fx-border-color: DodgerBlue;" GridPane.columnIndex="0" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
+                 <ImageView fx:id="avatar4" fitHeight="97.0" fitWidth="128.0" focusTraversable="true" nodeOrientation="INHERIT" onMouseClicked="#onClicAvatar" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                         <Image url="@avatar.png" />
+                     </image>
+                 </ImageView>
+                 <DatePicker fx:id="enterDate4" />
+                 <HBox fx:id="hboxNomChambre4" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterNom4" alignment="CENTER" promptText="Nom" style="-fx-border-color: Orange;" />
+                         <TextField fx:id="enterChambre4" alignment="CENTER" promptText="Chambre" style="-fx-border-color: Orange;" />
+                     </children>
+                 </HBox>
+                 <HBox fx:id="hboxTailleType4" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterTaille4" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Taille" style="-fx-border-color: Orange;" />
+                         <TextField fx:id="enterType4" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Type" style="-fx-border-color: Orange;" />
+                     </children>
+                 </HBox>
+                 <TextField fx:id="enterEntre4" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Entrée" />
+                 <HBox fx:id="centerPlat4" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterFeculent4" alignment="CENTER" promptText="Féculent" />
+                         <TextField fx:id="enterViande4" alignment="CENTER" promptText="Viande" />
+                         <TextField fx:id="enterLegume4" alignment="CENTER" promptText="Légume" />
+                     </children>
+                 </HBox>
+                 <TextField fx:id="enterLaitage4" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Laitage" />
+                 <HBox fx:id="hboxDessertCafe4" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterDessert4" alignment="CENTER" promptText="Dessert" />
+                         <TextField fx:id="enterCafe4" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Café" />
+                     </children>
+                 </HBox>
+                 <TextField fx:id="enterComment4" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Comment" />
+                 <Button onAction="#addToListView" text="Ajouter" />
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+             </VBox>
+             <VBox fx:id="center5" alignment="CENTER" spacing="10" style="-fx-border-color: DodgerBlue;" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
+                 <ImageView fx:id="avatar5" fitHeight="97.0" fitWidth="128.0" focusTraversable="true" nodeOrientation="INHERIT" onMouseClicked="#onClicAvatar" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                         <Image url="@avatar.png" />
+                     </image>
+                 </ImageView>
+                 <DatePicker fx:id="enterDate5" />
+                 <HBox fx:id="hboxNomChambre5" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterNom5" alignment="CENTER" promptText="Nom" style="-fx-border-color: Orange;" />
+                         <TextField fx:id="enterChambre5" alignment="CENTER" promptText="Chambre" style="-fx-border-color: Orange;" />
+                     </children>
+                 </HBox>
+                 <HBox fx:id="hboxTailleType5" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterTaille5" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Taille" style="-fx-border-color: Orange;" />
+                         <TextField fx:id="enterType5" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Type" style="-fx-border-color: Orange;" />
+                     </children>
+                 </HBox>
+                 <TextField fx:id="enterEntre5" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Entrée" />
+                 <HBox fx:id="centerPlat5" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterFeculent5" alignment="CENTER" promptText="Féculent" />
+                         <TextField fx:id="enterViande5" alignment="CENTER" promptText="Viande" />
+                         <TextField fx:id="enterLegume5" alignment="CENTER" promptText="Légume" />
+                     </children>
+                 </HBox>
+                 <TextField fx:id="enterLaitage5" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Laitage" />
+                 <HBox fx:id="hboxDessertCafe5" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterDessert5" alignment="CENTER" promptText="Dessert" />
+                         <TextField fx:id="enterCafe5" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Café" />
+                     </children>
+                 </HBox>
+                 <TextField fx:id="enterComment5" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Comment" />
+                 <Button onAction="#addToListView" text="Ajouter" />
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+             </VBox>
+             <VBox fx:id="center6" alignment="CENTER" spacing="10" style="-fx-border-color: DodgerBlue;" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
+                 <ImageView fx:id="avatar6" fitHeight="97.0" fitWidth="128.0" focusTraversable="true" nodeOrientation="INHERIT" onMouseClicked="#onClicAvatar" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                         <Image url="@avatar.png" />
+                     </image>
+                 </ImageView>
+                 <DatePicker fx:id="enterDate6" />
+                 <HBox fx:id="hboxNomChambre6" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterNom6" alignment="CENTER" promptText="Nom" style="-fx-border-color: Orange;" />
+                         <TextField fx:id="enterChambre6" alignment="CENTER" promptText="Chambre" style="-fx-border-color: Orange;" />
+                     </children>
+                 </HBox>
+                 <HBox fx:id="hboxTailleType6" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterTaille6" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Taille" style="-fx-border-color: Orange;" />
+                         <TextField fx:id="enterType6" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Type" style="-fx-border-color: Orange;" />
+                     </children>
+                 </HBox>
+                 <TextField fx:id="enterEntre6" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Entrée" />
+                 <HBox fx:id="centerPlat6" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterFeculent6" alignment="CENTER" promptText="Féculent" />
+                         <TextField fx:id="enterViande6" alignment="CENTER" promptText="Viande" />
+                         <TextField fx:id="enterLegume6" alignment="CENTER" promptText="Légume" />
+                     </children>
+                 </HBox>
+                 <TextField fx:id="enterLaitage6" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Laitage" />
+                 <HBox fx:id="hboxDessertCafe6" alignment="CENTER">
+                     <children>
+                         <TextField fx:id="enterDessert6" alignment="CENTER" promptText="Dessert" />
+                         <TextField fx:id="enterCafe6" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Café" />
+                     </children>
+                 </HBox>
+                 <TextField fx:id="enterComment6" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" promptText="Comment" />
+                 <Button onAction="#addToListView" text="Ajouter" />
+               <GridPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </GridPane.margin>
+             </VBox>
+         </children>
+      </GridPane>
     </center>
    <cursor>
       <Cursor fx:constant="DEFAULT" />
    </cursor>
    <top>
-      <MenuBar nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: #ccffff; -fx-border-color: DodgerBlue;" BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem fx:id="toPDF" mnemonicParsing="false" onAction="#toPDF" text="PDF" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-         <cursor>
-            <Cursor fx:constant="CLOSED_HAND" />
-         </cursor>
-      </MenuBar>
+       <MenuBar nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: #ccffff; -fx-border-color: DodgerBlue;" BorderPane.alignment="CENTER">
+           <cursor>
+               <Cursor fx:constant="CLOSED_HAND" />
+           </cursor>
+           <Menu mnemonicParsing="false" text="File">
+               <MenuItem fx:id="toPDF" mnemonicParsing="false" onAction="#toPDF" text="PDF" />
+           </Menu>
+           <Menu mnemonicParsing="false" text="Edit">
+               <MenuItem mnemonicParsing="false" text="Delete" />
+           </Menu>
+           <Menu mnemonicParsing="false" text="Help">
+               <MenuItem mnemonicParsing="false" text="About" />
+           </Menu>
+       </MenuBar>
    </top>
    <left>
-      <ListView fx:id="listView" prefHeight="588.0" prefWidth="223.0" style="-fx-background-color: #ccffff; -fx-border-color: DodgerBlue;" BorderPane.alignment="CENTER" />
+      <ListView fx:id="listView" prefHeight="588.0" prefWidth="171.0" style="-fx-background-color: #ccffff; -fx-border-color: DodgerBlue;" BorderPane.alignment="CENTER" />
    </left>
 </BorderPane>

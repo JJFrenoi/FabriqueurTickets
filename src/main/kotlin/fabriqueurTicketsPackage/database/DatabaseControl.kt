@@ -70,12 +70,14 @@ class DatabaseControl  {
     }
     fun removeItem(i: Int ){
         transaction {
-            TicketObj.deleteWhere{
-                TicketObj.numeroChambre eq i
-            }
+            addLogger(StdOutSqlLogger)
             PlatObj.deleteWhere {
                 PlatObj.sequelId eq i
             }
+            TicketObj.deleteWhere{
+                TicketObj.numeroChambre eq i
+            }
+
         }
     }
 }
