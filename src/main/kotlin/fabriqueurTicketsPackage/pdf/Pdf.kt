@@ -13,7 +13,7 @@ import javafx.scene.control.Alert
 import tornadofx.*
 
 class Pdf(residentsList:ObservableList<Ticket> ) {
-    private val destination = "/home/jeanjean/Documents/test.pdf"
+    private val destination = "/home/jean/Documents/test.pdf"
     private val center = TextAlignment.CENTER
     init {
         try {
