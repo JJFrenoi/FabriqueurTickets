@@ -5,7 +5,6 @@ import org.jetbrains.exposed.sql.jodatime.date
 
 object TicketObj : IntIdTable("Ticket") {
     val numeroChambre= integer("numeroChambre").uniqueIndex()
-    val date = varchar("Date", 10)
     val nom= varchar("Nom", 50)
     val type = varchar("Type" , 20)
     val taille = varchar("Taille",20)

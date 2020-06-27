@@ -37,7 +37,6 @@ class Pdf(residentsList:ObservableList<Ticket> ) {
                     }
                     cell.apply{
                         add(image)
-                        add(Paragraph(it.date.toString()) )
                         add(Paragraph("${it.numeroChambre} ${it.nom}"))
                         add(Paragraph("${it.taille} ${it.type}"))
                         add(Paragraph(it.plat?.entree ))

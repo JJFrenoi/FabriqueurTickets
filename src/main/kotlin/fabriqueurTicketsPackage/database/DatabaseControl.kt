@@ -22,7 +22,6 @@ class DatabaseControl  {
             val ticketID = TicketObj.insertAndGetId {
                 it[numeroChambre] = ticket.numeroChambre
                 it[pathToAvatar] = ticket.avatarPath()
-                it[date] = ticket.date.toString()
                 it[nom] = ticket.nom
                 it[type] = ticket.type
                 it[taille] = ticket.taille
@@ -49,7 +48,6 @@ class DatabaseControl  {
             TicketObj.selectAll().forEach {
                 val ticket = Ticket(
                         avatar = Image(it[TicketObj.pathToAvatar]),
-                        date = LocalDate.parse(it[TicketObj.date]),
                         numeroChambre = it[TicketObj.numeroChambre],
                         nom = it[TicketObj.nom],
                         type = it[TicketObj.type],
