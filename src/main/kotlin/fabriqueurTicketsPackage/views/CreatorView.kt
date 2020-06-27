@@ -41,14 +41,10 @@ class CreatorView: View("Creator View :: Tickets Maker") {
     private val enterLaitage: TextField by fxid()
     private val enterDessert: TextField by fxid()
     private val enterComment: TextField by fxid()
-    private val enterDate : DatePicker by fxid()
     private val enterCafe : TextField by fxid()
     private val databaseControl = DatabaseControl()
     init {
-        val dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
-        enterDate.converter = LocalDateStringConverter(dateFormatter, dateFormatter)
         addSuggestion()
-        enterDate.value = LocalDate.now().plusDays(1)
         listView.cellFormat { text = "${it.nom} ${it.numeroChambre}" }
         listView.onUserSelect(1) {
             listView.items.remove(it)
@@ -64,7 +60,6 @@ class CreatorView: View("Creator View :: Tickets Maker") {
             enterDessert.text = it.plat?.dessert
             enterComment.text = it.comment
             enterLaitage.text = it.plat?.laitage
-            enterDate.value = it.date
         }
         listView.items = databaseControl.pullDatabase()?.toObservable()
 
@@ -78,7 +73,6 @@ class CreatorView: View("Creator View :: Tickets Maker") {
         }
         val ticket = Ticket(
                 avatar.image,
-                enterDate.value,
                 enterChambre.text.toInt(),
                 enterNom.text.toUpperCase(),
                 enterType.text,
@@ -89,7 +83,6 @@ class CreatorView: View("Creator View :: Tickets Maker") {
         filter.forEach {
             it.clear()
         }
-        enterDate.value = LocalDate.now().plusDays(1)
         databaseControl.pushtoDatabase(ticket, plat)
     }
     private fun addSuggestion(){

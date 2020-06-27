@@ -77,7 +77,6 @@ class DatabaseControl  {
             TicketObj.deleteWhere{
                 TicketObj.numeroChambre eq i
             }
-
         }
     }
 }
