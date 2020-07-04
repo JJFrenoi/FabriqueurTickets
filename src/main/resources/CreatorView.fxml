@@ -337,7 +337,9 @@
            <cursor>
                <Cursor fx:constant="CLOSED_HAND" />
            </cursor>
-           <Menu fx:id="toPDF" mnemonicParsing="false" onAction="#toPDF" text="PDF" />
+           <Menu fx:id="toPDF" mnemonicParsing="false"  text="PDF">
+               <MenuItem fx:id="toPdfItem" mnemonicParsing="false" text="PDF" onAction="#toPDF"/>
+           </Menu>
            <Menu mnemonicParsing="false" text="Imprimer" />
            <Menu mnemonicParsing="false" text="Mode un ticket"/>
        </MenuBar>

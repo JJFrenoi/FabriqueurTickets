@@ -5,7 +5,6 @@ import fabriqueurTicketsPackage.pdf.Pdf
 import fabriqueurTicketsPackage.ticket.Plat
 import fabriqueurTicketsPackage.ticket.Ticket
 import javafx.scene.control.Alert
-import javafx.scene.control.DatePicker
 import javafx.scene.control.ListView
 import javafx.scene.control.TextField
 import javafx.scene.image.Image
@@ -14,26 +13,27 @@ import javafx.scene.layout.BorderPane
 import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
 import javafx.stage.FileChooser
-import javafx.util.converter.LocalDateStringConverter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.controlsfx.control.textfield.TextFields
 import tornadofx.*
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 
-class CreatorView: View("Creator View :: Tickets Maker") {
-    override val root : BorderPane by fxml("/CreatorView.fxml")
-    private val listView : ListView<Ticket> by fxid()
-    private val center : VBox by fxid()
-    private val avatar : ImageView by fxid()
-    private val centerPlat : HBox by fxid()
-    private val hboxNomChambre : HBox by fxid()
-    private val hboxTailleType : HBox by fxid()
-    private val hboxDessertCafe : HBox by fxid()
+class CreatorView : View("Creator View :: Tickets Maker") {
+    override val root: BorderPane by fxml("/CreatorView.fxml")
+    private val listView: ListView<Ticket> by fxid()
+    private val center: VBox by fxid()
+    private val avatar: ImageView by fxid()
+    private val centerPlat: HBox by fxid()
+    private val hboxNomChambre: HBox by fxid()
+    private val hboxTailleType: HBox by fxid()
+    private val hboxDessertCafe: HBox by fxid()
     private val enterNom: TextField by fxid()
     private val enterChambre: TextField by fxid()
-    private val enterType : TextField by fxid()
-    private val enterTaille : TextField by fxid()
+    private val enterType: TextField by fxid()
+    private val enterTaille: TextField by fxid()
     private val enterEntre: TextField by fxid()
     private val enterFeculent: TextField by fxid()
     private val enterViande: TextField by fxid()
@@ -41,8 +41,9 @@ class CreatorView: View("Creator View :: Tickets Maker") {
     private val enterLaitage: TextField by fxid()
     private val enterDessert: TextField by fxid()
     private val enterComment: TextField by fxid()
-    private val enterCafe : TextField by fxid()
+    private val enterCafe: TextField by fxid()
     private val databaseControl = DatabaseControl()
+
     init {
         addSuggestion()
         listView.cellFormat { text = "${it.nom} ${it.numeroChambre}" }
@@ -61,12 +62,14 @@ class CreatorView: View("Creator View :: Tickets Maker") {
             enterComment.text = it.comment
             enterLaitage.text = it.plat?.laitage
         }
-        listView.items = databaseControl.pullDatabase()?.toObservable()
-
+        GlobalScope.launch {
+            listView.items = withContext(Dispatchers.Default) { databaseControl.pullDatabase() }.toObservable()
+        }
     }
+
     fun addToListView() {
         val filter = center.children.filterIsInstance<TextField>() + centerPlat.children.filterIsInstance<TextField>() +
-                hboxNomChambre.children.filterIsInstance<TextField>() + hboxTailleType.children.filterIsInstance<TextField>()+
+                hboxNomChambre.children.filterIsInstance<TextField>() + hboxTailleType.children.filterIsInstance<TextField>() +
                 hboxDessertCafe.children.filterIsInstance<TextField>()
         val plat = Plat(enterEntre.text, enterFeculent.text, enterLegume.text, enterViande.text, enterLaitage.text, enterDessert.text, enterCafe.text).apply {
             print()
@@ -85,27 +88,32 @@ class CreatorView: View("Creator View :: Tickets Maker") {
         }
         databaseControl.pushtoDatabase(ticket, plat)
     }
-    private fun addSuggestion(){
+
+    private fun addSuggestion() {
         TextFields.bindAutoCompletion(enterEntre, Plat.possibleSuggestionsEntree)
         TextFields.bindAutoCompletion(enterType, Ticket.possibleSuggestionsType)
         TextFields.bindAutoCompletion(enterTaille, Ticket.possibleSuggestionsTaille)
         TextFields.bindAutoCompletion(enterCafe, Plat.possibleSuggestionsCafe)
     }
-    fun toPDF(){
+
+    fun toPDF() {
+
         Pdf(listView.items).apply {
             whereIsMyFile()
         }
+
     }
-    fun onClicAvatar(){
+
+    fun onClicAvatar() {
         val selectPhoto = arrayOf(FileChooser.ExtensionFilter("Fichiers Photos (*.jpeg, *.png, *.gif, *.bmp)", "*.jpeg", "*.png", "*.gif, *.bmp"))
         try {
-            val chooseFile = chooseFile("Selectionner une photo",selectPhoto)
+            val chooseFile = chooseFile("Selectionner une photo", selectPhoto)
             val url = chooseFile.first().toURI().toURL().toString()
             println(url)
             avatar.image = Image(url)
 
-        }catch (e : Exception){
-            alert(Alert.AlertType.ERROR , "Le lien vers image n'est pas valide")
+        } catch (e: Exception) {
+            alert(Alert.AlertType.ERROR, "Le lien vers image n'est pas valide")
         }
     }
 }
